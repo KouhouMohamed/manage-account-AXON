@@ -1,7 +1,8 @@
-package ma.enset.cqrsaxon.command.aggregate;
+package ma.enset.commandservice.aggregate;
 
 import lombok.extern.slf4j.Slf4j;
 import ma.enset.cqrsaxon.commonapi.commands.AccountCreateCommand;
+
 import ma.enset.cqrsaxon.commonapi.commands.AccountCreditCommand;
 import ma.enset.cqrsaxon.commonapi.commands.AccountDebitCommand;
 import ma.enset.cqrsaxon.commonapi.enums.AccountStatus;
@@ -17,6 +18,9 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
+import java.util.Date;
+
+
 @Aggregate
 @Slf4j
 public class AccountAggregate {
@@ -30,6 +34,16 @@ public class AccountAggregate {
     // this constructor is required by AXON framework
     public AccountAggregate(){}
 
+    @Override
+    public String toString() {
+        return "AccountAggregate{" +
+                "accountId='" + accountId + '\'' +
+                ", amount=" + amount +
+                ", currency='" + currency + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
     @CommandHandler
     public AccountAggregate(AccountCreateCommand command){
         if(command.getInitialBalance()<0) throw new NegativeBalanceException("Account balance can not be negative => "+command.getInitialBalance());
@@ -37,7 +51,8 @@ public class AccountAggregate {
                 command.getId(),
                 command.getInitialBalance(),
                 command.getCurrency(),
-                AccountStatus.CREATED
+                AccountStatus.CREATED,
+                new Date()
         ));
     }
 
@@ -52,7 +67,8 @@ public class AccountAggregate {
         // after create an account we need to activate it
         AggregateLifecycle.apply(new AccountActivatedEvent(
                 event.getId(),
-                AccountStatus.ACTIVATED
+                AccountStatus.ACTIVATED,
+                new Date()
         ));
     }
     @EventSourcingHandler
@@ -69,7 +85,8 @@ public class AccountAggregate {
                 command.getId(),
                 command.getBalance(),
                 command.getCurrency(),
-                AccountStatus.CREDITED
+                AccountStatus.CREDITED,
+                new Date()
         ));
     }
     @EventSourcingHandler
@@ -85,11 +102,12 @@ public class AccountAggregate {
     public void handle(AccountDebitCommand command){
         if (command.getBalance() < 0) throw new NegativeBalanceException("Account can not be debited by a negative balance => "+command.getBalance());
         if (command.getBalance() > this.amount) throw new InsufficientAmountException("Account's amount is not sufficient to make the debit operation");
-        AggregateLifecycle.apply(new AccountCreditedEvent(
+        AggregateLifecycle.apply(new AccountDebitedEvent(
                 command.getId(),
                 command.getBalance(),
                 command.getCurrency(),
-                AccountStatus.DEBITED
+                AccountStatus.DEBITED,
+                new Date()
         ));
     }
     @EventSourcingHandler

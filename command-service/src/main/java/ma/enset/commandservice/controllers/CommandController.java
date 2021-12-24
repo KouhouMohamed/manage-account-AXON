@@ -1,20 +1,17 @@
-package ma.enset.cqrsaxon.command.controllers;
+package ma.enset.commandservice.controllers;
 
 import lombok.AllArgsConstructor;
-import ma.enset.cqrsaxon.command.services.CommandService;
-import ma.enset.cqrsaxon.commonapi.commands.AccountCreateCommand;
-import ma.enset.cqrsaxon.commonapi.commands.AccountCreditCommand;
+import ma.enset.commandservice.services.CommandService;
 import ma.enset.cqrsaxon.commonapi.dtos.CreateAccountRequestDto;
 import ma.enset.cqrsaxon.commonapi.dtos.CreditAccountRequestDto;
 import ma.enset.cqrsaxon.commonapi.dtos.DebitAccountRequestDto;
-import org.axonframework.commandhandling.CommandBus;
-import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -22,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @AllArgsConstructor
 public class CommandController {
     private CommandService commandService;
+    private EventStore eventStore;
 
     @PostMapping(path = "/create")
     public CompletableFuture<String> createAccount(@RequestBody CreateAccountRequestDto request){
@@ -39,6 +37,11 @@ public class CommandController {
     public CompletableFuture<String> creditAccount(@RequestBody CreditAccountRequestDto request){
         CompletableFuture<String> response = commandService.creditAccount(request);
         return response;
+    }
+
+    @GetMapping(path = "/event-store/{accountId}")
+    public Stream eventStore(@PathVariable String accountId){
+        return eventStore.readEvents(accountId).asStream();
     }
 
     @ExceptionHandler(Exception.class)

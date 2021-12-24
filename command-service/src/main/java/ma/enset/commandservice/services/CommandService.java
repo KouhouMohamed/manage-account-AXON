@@ -1,4 +1,4 @@
-package ma.enset.cqrsaxon.command.services;
+package ma.enset.commandservice.services;
 
 import ma.enset.cqrsaxon.commonapi.dtos.CreateAccountRequestDto;
 import ma.enset.cqrsaxon.commonapi.dtos.CreditAccountRequestDto;

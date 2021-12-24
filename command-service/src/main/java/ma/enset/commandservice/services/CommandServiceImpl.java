@@ -1,4 +1,4 @@
-package ma.enset.cqrsaxon.command.services;
+package ma.enset.commandservice.services;
 
 import ma.enset.cqrsaxon.commonapi.commands.AccountCreateCommand;
 import ma.enset.cqrsaxon.commonapi.commands.AccountCreditCommand;
@@ -7,7 +7,6 @@ import ma.enset.cqrsaxon.commonapi.dtos.CreateAccountRequestDto;
 import ma.enset.cqrsaxon.commonapi.dtos.CreditAccountRequestDto;
 import ma.enset.cqrsaxon.commonapi.dtos.DebitAccountRequestDto;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
