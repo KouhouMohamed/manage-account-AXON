@@ -31,10 +31,10 @@ public class AccountController {
     @GetMapping(path = "/get-account/{id}", produces = { MediaType.APPLICATION_JSON_VALUE } )
     public Account getAccount(@PathVariable String id) throws ExecutionException, InterruptedException {
         GetAccountQuery query = new GetAccountQuery(id);
-        CompletableFuture<Account> response = queryGateway.query(query, ResponseTypes.instanceOf((Account.class)));
+        CompletableFuture<Account> response = queryGateway.query(new GetAccountQuery(id), ResponseTypes.instanceOf((Account.class)));
         return response.get();
     }
-    @ExceptionHandler(Exception.class)
+    //@ExceptionHandler(Exception.class)
     public ResponseEntity<String> exceptionHandler(Exception exception){
         ResponseEntity<String> response = new ResponseEntity<String>(
                 exception.getMessage(),

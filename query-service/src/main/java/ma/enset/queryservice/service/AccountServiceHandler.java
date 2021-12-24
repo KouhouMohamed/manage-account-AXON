@@ -84,7 +84,7 @@ public class AccountServiceHandler {
         Operation operation = new Operation();
         operation.setAmount(event.getBalance());
         operation.setCreatedAt(event.getEventDate());
-        operation.setType(OperationType.CREDIT);
+        operation.setType(OperationType.DEBIT);
         operation.setAccount(account);
 
         operationRepository.save(operation);
@@ -97,6 +97,6 @@ public class AccountServiceHandler {
     }
     @QueryHandler
     public Account on(GetAccountQuery query){
-        return accountRepository.getById(query.getAccountId());
+        return accountRepository.findById(query.getAccountId()).get();
     }
 }
