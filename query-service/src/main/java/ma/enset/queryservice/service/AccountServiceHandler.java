@@ -7,6 +7,7 @@ import ma.enset.cqrsaxon.commonapi.events.AccountActivatedEvent;
 import ma.enset.cqrsaxon.commonapi.events.AccountCreatedEvent;
 import ma.enset.cqrsaxon.commonapi.events.AccountCreditedEvent;
 import ma.enset.cqrsaxon.commonapi.events.AccountDebitedEvent;
+import ma.enset.cqrsaxon.commonapi.queries.GetAccountQuery;
 import ma.enset.cqrsaxon.commonapi.queries.GetAllAccountsQuery;
 import ma.enset.queryservice.entities.Account;
 import ma.enset.queryservice.entities.Operation;
@@ -93,5 +94,9 @@ public class AccountServiceHandler {
     @QueryHandler
     public List<Account> on(GetAllAccountsQuery query){
         return accountRepository.findAll();
+    }
+    @QueryHandler
+    public Account on(GetAccountQuery query){
+        return accountRepository.getById(query.getAccountId());
     }
 }
