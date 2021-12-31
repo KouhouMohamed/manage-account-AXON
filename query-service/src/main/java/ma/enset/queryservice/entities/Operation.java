@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ma.enset.cqrsaxon.commonapi.enums.OperationType;
+import ma.enset.cqrsaxon.enums.OperationType;
 
 import javax.persistence.*;
 import java.util.Date;

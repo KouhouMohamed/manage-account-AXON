@@ -2,13 +2,13 @@ package ma.enset.queryservice.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ma.enset.cqrsaxon.commonapi.enums.OperationType;
-import ma.enset.cqrsaxon.commonapi.events.AccountActivatedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountCreatedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountCreditedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountDebitedEvent;
-import ma.enset.cqrsaxon.commonapi.queries.GetAccountQuery;
-import ma.enset.cqrsaxon.commonapi.queries.GetAllAccountsQuery;
+import ma.enset.cqrsaxon.enums.OperationType;
+import ma.enset.cqrsaxon.events.AccountActivatedEvent;
+import ma.enset.cqrsaxon.events.AccountCreatedEvent;
+import ma.enset.cqrsaxon.events.AccountCreditedEvent;
+import ma.enset.cqrsaxon.events.AccountDebitedEvent;
+import ma.enset.cqrsaxon.queries.GetAccountQuery;
+import ma.enset.cqrsaxon.queries.GetAllAccountsQuery;
 import ma.enset.queryservice.entities.Account;
 import ma.enset.queryservice.entities.Operation;
 import ma.enset.queryservice.repositories.AccountRepository;
@@ -17,11 +17,8 @@ import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Transient;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor

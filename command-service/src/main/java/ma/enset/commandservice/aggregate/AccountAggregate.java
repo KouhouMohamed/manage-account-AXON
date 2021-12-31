@@ -1,17 +1,17 @@
 package ma.enset.commandservice.aggregate;
 
 import lombok.extern.slf4j.Slf4j;
-import ma.enset.cqrsaxon.commonapi.commands.AccountCreateCommand;
 
-import ma.enset.cqrsaxon.commonapi.commands.AccountCreditCommand;
-import ma.enset.cqrsaxon.commonapi.commands.AccountDebitCommand;
-import ma.enset.cqrsaxon.commonapi.enums.AccountStatus;
-import ma.enset.cqrsaxon.commonapi.events.AccountActivatedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountCreatedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountCreditedEvent;
-import ma.enset.cqrsaxon.commonapi.events.AccountDebitedEvent;
-import ma.enset.cqrsaxon.commonapi.exceptions.InsufficientAmountException;
-import ma.enset.cqrsaxon.commonapi.exceptions.NegativeBalanceException;
+import ma.enset.cqrsaxon.commands.AccountCreateCommand;
+import ma.enset.cqrsaxon.commands.AccountCreditCommand;
+import ma.enset.cqrsaxon.commands.AccountDebitCommand;
+import ma.enset.cqrsaxon.enums.AccountStatus;
+import ma.enset.cqrsaxon.events.AccountActivatedEvent;
+import ma.enset.cqrsaxon.events.AccountCreatedEvent;
+import ma.enset.cqrsaxon.events.AccountCreditedEvent;
+import ma.enset.cqrsaxon.events.AccountDebitedEvent;
+import ma.enset.cqrsaxon.exceptions.InsufficientAmountException;
+import ma.enset.cqrsaxon.exceptions.NegativeBalanceException;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

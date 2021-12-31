@@ -1,8 +1,8 @@
 package ma.enset.commandservice.services;
 
-import ma.enset.cqrsaxon.commonapi.dtos.CreateAccountRequestDto;
-import ma.enset.cqrsaxon.commonapi.dtos.CreditAccountRequestDto;
-import ma.enset.cqrsaxon.commonapi.dtos.DebitAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.CreateAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.CreditAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.DebitAccountRequestDto;
 
 import java.util.concurrent.CompletableFuture;
 

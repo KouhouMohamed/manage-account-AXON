@@ -2,7 +2,7 @@ package ma.enset.queryservice.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ma.enset.cqrsaxon.commonapi.enums.AccountStatus;
+import ma.enset.cqrsaxon.enums.AccountStatus;
 
 import javax.persistence.*;
 import java.util.Collection;

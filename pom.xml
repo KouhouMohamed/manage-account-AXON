@@ -20,6 +20,7 @@
     <modules>
         <module>command-service</module>
         <module>query-service</module>
+        <module>core-api</module>
     </modules>
     <!--dependencyManagement-->
         <dependencies>
@@ -71,22 +72,29 @@
                 <artifactId>mapstruct</artifactId>
                 <version>1.4.2.Final</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
             <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct</artifactId>
-                <version>1.4.2.Final</version>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>1.5.2</version>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk8 -->
             <dependency>
-                <groupId>org.axonframework</groupId>
-                <artifactId>axon-spring-boot-starter</artifactId>
-                <version>4.4.3</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.axonframework</groupId>
-                        <artifactId>axon-server-connector</artifactId>
-                    </exclusion>
-                </exclusions>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-jdk8</artifactId>
+                <version>1.5.10</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-test -->
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-test</artifactId>
+                <version>1.5.10</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-core</artifactId>
+                <version>3.4.8</version>
             </dependency>
 
         </dependencies>

@@ -2,9 +2,9 @@ package ma.enset.commandservice.controllers;
 
 import lombok.AllArgsConstructor;
 import ma.enset.commandservice.services.CommandService;
-import ma.enset.cqrsaxon.commonapi.dtos.CreateAccountRequestDto;
-import ma.enset.cqrsaxon.commonapi.dtos.CreditAccountRequestDto;
-import ma.enset.cqrsaxon.commonapi.dtos.DebitAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.CreateAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.CreditAccountRequestDto;
+import ma.enset.cqrsaxon.dtos.DebitAccountRequestDto;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

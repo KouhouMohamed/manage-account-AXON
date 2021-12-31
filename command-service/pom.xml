@@ -20,7 +20,7 @@
         <!-- We add this dependency so we can share classes between services-->
         <dependency>
             <groupId>ma.enset</groupId>
-            <artifactId>cqrs-axon</artifactId>
+            <artifactId>core-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

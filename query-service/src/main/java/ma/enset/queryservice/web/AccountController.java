@@ -1,8 +1,8 @@
 package ma.enset.queryservice.web;
 
 import lombok.AllArgsConstructor;
-import ma.enset.cqrsaxon.commonapi.queries.GetAccountQuery;
-import ma.enset.cqrsaxon.commonapi.queries.GetAllAccountsQuery;
+import ma.enset.cqrsaxon.queries.GetAccountQuery;
+import ma.enset.cqrsaxon.queries.GetAllAccountsQuery;
 import ma.enset.queryservice.entities.Account;
 import ma.enset.queryservice.repositories.AccountRepository;
 import ma.enset.queryservice.service.AccountServiceHandler;
